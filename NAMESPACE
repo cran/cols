@@ -7,4 +7,4 @@ importFrom("Rfast2", cls)
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")
 
-export(cls, pls)
+export(cls, pls, mvpls)

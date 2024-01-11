@@ -6,16 +6,18 @@ Constrained Ordinary Least Squares
 }
 
 \description{
-Constrained ordinary least squares is performed. One constraint is that all beta coefficients (including the constant) cannot be negative. They can be either 0 or strictly positive. Another constraint is that the sum ob the beta coefficients sum to a constant. References: Hansen, B.E. (2022). Econometrics, Princeton University Press.
+Constrained ordinary least squares is performed. One constraint is that all beta coefficients
+(including the constant) cannot be negative. They can be either 0 or strictly positive.
+Another constraint is that the sum of the beta coefficients equals a constant.
+References: Hansen, B.E. (2022). Econometrics, Princeton University Press.
 }
 
 \details{
 \tabular{ll}{
 Package: \tab cols\cr
 Type: \tab Package\cr
-Version: \tab 1.0 \cr
-Date: \tab 2023-10-28\cr
-License: \tab GPL-2\cr
+Version: \tab 1.1 \cr
+Date: \tab 2024-01-11 \cr
 }
 }
 
