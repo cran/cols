@@ -1,5 +1,6 @@
 \name{Positively constrained least squares}
 \alias{pls}
+\alias{mpls}
 \title{
 Positively constrained least squares
 }
@@ -10,11 +11,12 @@ Positively constrained least squares.
 
 \usage{
 pls(y, x)
+mpls(y, x)
 }
 
 \arguments{
 \item{y}{
-The response variables, a numerical vector with observations.
+The response variable. For the pls() a numerical vector with observations, but for the mpls() a numerical matrix .
 }
 \item{x}{
 A matrix with independent variables, the design matrix.
@@ -22,16 +24,16 @@ A matrix with independent variables, the design matrix.
 }
 
 \details{
-The constraint is that all beta coefficients (including the constant) are positive.
+The constraint is that all beta coefficients (including the constant) are non negative. The pls() function performs a single regression model, whereas the mpls() function performs a regression for each column of y. Each regression is independent of the others.
 }
 
 \value{
 A list including:
 \item{be}{
-The positively constrained beta coefficients.
+A numerical matrix with the positively constrained beta coefficients.
 }
 \item{mse}{
-The mean squared error.
+A numerical vector with the mean squared error(s).
 }
 }
 
@@ -50,7 +52,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{cls}
+\code{\link{cls}, \link{pcls}, \link{mvpls}
 }
 }
 

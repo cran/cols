@@ -1,5 +1,6 @@
 \name{Constrained least squares}
 \alias{cls}
+\alias{mcls}
 \title{
 Constrained least squares
 }
@@ -10,11 +11,12 @@ Constrained least squares.
 
 \usage{
 cls(y, x, R, ca)
+mcls(y, x, R, ca)
 }
 
 \arguments{
 \item{y}{
-The response variables, a numerical vector with observations.
+The response variable. For the cls() a numerical vector with observations, but for the mcls() a numerical matrix .
 }
 \item{x}{
 A matrix with independent variables, the design matrix.
@@ -28,22 +30,21 @@ The value of the constraint, \eqn{R^T \beta = c}. See details and examples.
 }
 
 \details{
-This is described in Chapter 8.2 of Hansen (2019). The idea is to inimise the sum of squares of the residuals under the constraint \eqn{R^T \beta = c}. As mentioned above, be careful with the input you give in the x matrix and the R vector.
+This is described in Chapter 8.2 of Hansen (2019). The idea is to inimise the sum of squares of the residuals under the constraint \eqn{R^T \beta = c}. As mentioned above, be careful with the input you give in the x matrix and the R vector. The cls() function performs a single regression model, whereas the mcls() function performs a regression for each column of y. Each regression is independent of the others.
 }
 
 \value{
 A list including:
-\item{bols}{
-The OLS (Ordinary Least Squares) beta coefficients.
+\item{be}{
+A numerical matrix with the constrained beta coefficients.
 }
-\item{bcls}{
-The CLS (Constrained Least Squares) beta coefficients.
+\item{mse}{
+A numerical vector with the mean squared error.
 }
 }
 
 \references{
 Hansen, B. E. (2022). Econometrics, Princeton University Press.
-
 }
 
 \author{
