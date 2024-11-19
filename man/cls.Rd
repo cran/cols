@@ -1,6 +1,6 @@
 \name{Constrained least squares}
 \alias{cls}
-\alias{mcls}
+\alias{mvcls}
 \title{
 Constrained least squares
 }
@@ -11,12 +11,12 @@ Constrained least squares.
 
 \usage{
 cls(y, x, R, ca)
-mcls(y, x, R, ca)
+mvcls(y, x, R, ca)
 }
 
 \arguments{
 \item{y}{
-The response variable. For the cls() a numerical vector with observations, but for the mcls() a numerical matrix .
+The response variable. For the cls() a numerical vector with observations, but for the mvcls() a numerical matrix .
 }
 \item{x}{
 A matrix with independent variables, the design matrix.
@@ -58,7 +58,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{pls}
+\code{\link{pls}, \link{int.cls}
 }
 }
 
