@@ -3,11 +3,11 @@ mpls <- function(y, x) {
   dm <- dim(x)
   n <- dm[1]   ;   p <- dm[2]
   d <- dim(y)[2]
-  dvec <-  2 * crossprod(x, y)
-  xx <- 2 * crossprod(x)
+  dvec <- crossprod(x, y)
+  xx <- crossprod(x)
   A <- diag(p)
   bvec <- rep(0, p)
-  mse <- rep( sum(y^2), d)
+  mse <- numeric(d)
   be <- matrix(nrow = p, ncol = d)
 
   for ( j in 1:d ) {
@@ -15,7 +15,7 @@ mpls <- function(y, x) {
     be[, j] <- f$solution
     mse[j] <- f$value
   }
-  mse <- ( mse + Rfast::colsums(y^2) ) / n
+  mse <- ( 2 * mse + Rfast::colsums(y^2) ) / n
   rownames(be) <- colnames(x)
   list(be = be, mse = mse)
 }

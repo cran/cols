@@ -22,7 +22,8 @@ A matrix with independent variables, the design matrix.
 }
 
 \details{
-The constraint is that all beta coefficients (including the constant) are positive.
+The constraint is that all beta coefficients (including the constant) are positive, i.e.
+\eqn{min \sum_{i=1}^n(\bm{y}_i-\bm{x}_i\bm{\beta})^\top(\bm{y}_i-\bm{x}_i\bm{\beta}) } such that \eqn{\beta_{jk}\geq 0}.
 }
 
 \value{

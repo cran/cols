@@ -3,16 +3,16 @@ mvpls <- function(y, x) {
   py <- dim(y)[2]   ;    px <- dim(x)[2]
   pyx <- py * px    ;    n <- dim(y)[1]
 
-  dvec <-  2 * as.vector( crossprod(x, y) )
+  dvec <- as.vector( crossprod(x, y) )
   xx <- crossprod(x)
   XX <- matrix(0, pyx, pyx)
   ind <- matrix( 1:pyx, ncol = px, byrow = TRUE)
   for ( i in 1:py )  XX[ ind[i, ], ind[i, ] ] <- xx
   A <- diag(pyx)
   bvec <- rep(0, pyx)
-  f <- quadprog::solve.QP(Dmat = 2 * XX, dvec = dvec, Amat = A, bvec = bvec, factorized=FALSE)
+  f <- quadprog::solve.QP(Dmat = XX, dvec = dvec, Amat = A, bvec = bvec, factorized=FALSE)
   be <- matrix(f$solution, ncol = py)
-  mse <- ( sum(y^2) + f$value ) / n
+  mse <- ( sum(y^2) + 2 * f$value ) / n
 
   if ( is.null( colnames(y) ) ) {
     colnames(be) <- paste("Y", 1:py, sep = "")
@@ -21,5 +21,5 @@ mvpls <- function(y, x) {
     rownames(be) <- paste("X", 1:px, sep = "")
   } else rownames(be) <- colnames(x)
 
-  list( be=be, mse = mse)
+  list( be = be, mse = mse)
 }
