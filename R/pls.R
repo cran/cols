@@ -1,16 +1,28 @@
 pls <- function(y, x) {
-
-  dm <- dim(x)
-  n <- dm[1]   ;   p <- dm[2]
-
-  dvec <- as.vector( crossprod(x, y) )
-  xx <- crossprod(x)
-  A <- diag(p)
-  bvec <- rep(0, p)
-  f <- quadprog::solve.QP(Dmat = xx, dvec = dvec, Amat = A, bvec = bvec)
-  be <- as.matrix( f$solution )
+  n <- length(y)
+  xtx <- crossprod(x)
+  xty <- crossprod(x, y)
+  be <- as.matrix( nnsolve::fnnls(xtx, xty) )
   rownames(be) <- colnames(x)
-  mse <- ( sum(y^2) + 2 * f$value ) / n
-
+  mse <- sum( (y - x %*% be)^2 ) / n
   list(be = be, mse = mse)
 }
+
+
+
+# pls <- function(y, x) {
+#
+#   dm <- dim(x)
+#   n <- dm[1]   ;   p <- dm[2]
+#
+#   dvec <- as.vector( crossprod(x, y) )
+#   xx <- crossprod(x)
+#   A <- diag(p)
+#   bvec <- rep(0, p)
+#   f <- quadprog::solve.QP(Dmat = xx, dvec = dvec, Amat = A, bvec = bvec)
+#   be <- as.matrix( f$solution )
+#   rownames(be) <- colnames(x)
+#   mse <- ( sum(y^2) + 2 * f$value ) / n
+#
+#   list(be = be, mse = mse)
+# }

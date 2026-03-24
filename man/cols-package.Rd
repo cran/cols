@@ -16,8 +16,8 @@ References: Hansen, B.E. (2022). Econometrics, Princeton University Press.
 \tabular{ll}{
 Package: \tab cols\cr
 Type: \tab Package\cr
-Version: \tab 1.5 \cr
-Date: \tab 2024-12-20 \cr
+Version: \tab 1.6 \cr
+Date: \tab 2026-03-24 \cr
 }
 }
 

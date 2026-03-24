@@ -55,6 +55,6 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 
 \examples{
 x <- as.matrix( iris[1:50, 1:4] )
-y <- rnorm(50)
+y <- abs( rnorm(50) )
 pcls(y, x)
 }
