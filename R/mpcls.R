@@ -1,18 +1,25 @@
 mpcls <- function(y, x) {
-  dm <- dim(x)
-  n <- dm[1]   ;   p <- dm[2]
-  d <- dim(y)[2]
-
-  xtx <- crossprod(x)
-  xty <- crossprod(x, y)
-
-  mse <- numeric(d)
-  be <- matrix(nrow = p, ncol = d)
-  for ( j in 1:d )  be[, j] <- as.matrix( nnsolve::fnnls(xtx, xty[, j], sum_to_constant = TRUE) )
-  mse <- Rfast::colmeans( (y - x %*% be)^2 )
-  rownames(be) <- colnames(x)
-  list(be = be, mse = mse)
+  mod <- nnsolve::fnnls_regs(y, x, sum_to_constant = TRUE)
+  names(mod) <- c("be", "mse")
+  mod
 }
+
+
+# mpcls <- function(y, x) {
+#   dm <- dim(x)
+#   n <- dm[1]   ;   p <- dm[2]
+#   d <- dim(y)[2]
+#
+#   xtx <- crossprod(x)
+#   xty <- crossprod(x, y)
+#
+#   mse <- numeric(d)
+#   be <- matrix(nrow = p, ncol = d)
+#   for ( j in 1:d )  be[, j] <- as.matrix( nnsolve::fnnls(xtx, xty[, j], sum_to_constant = TRUE) )
+#   mse <- Rfast::colmeans( (y - x %*% be)^2 )
+#   rownames(be) <- colnames(x)
+#   list(be = be, mse = mse)
+# }
 
 
 # mpcls <- function(y, x) {
